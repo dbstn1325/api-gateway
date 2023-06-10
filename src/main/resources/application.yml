@@ -27,7 +27,7 @@ spring:
             - Path=/user-service/login
             - Method=POST
           filters:
-            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
+#            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
 
         # 회원가입
@@ -37,7 +37,7 @@ spring:
             - Path=/user-service/users
             - Method=POST
           filters:
-            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
+#            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
 
         # User micro service
@@ -47,7 +47,7 @@ spring:
             - Path=/user-service/**
             - Method=GET
           filters:
-            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
+#            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
 
         # Product micro service
@@ -61,3 +61,9 @@ spring:
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/order-service/**
+
+        # Cart micro service
+        - id: cart-service
+          uri: lb://CART-SERVICE
+          predicates:
+            - Path=/cart-service/**
