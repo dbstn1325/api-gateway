@@ -20,7 +20,7 @@ public class PreFlightCorsConfiguration {
     private static final String ALLOWED_HEADERS = "x-requested-with,authorization," + "refreshtoken,Access-Control-Allow-Origin,Content-Type," + "credential,X-AUTH-TOKEN,X-CSRF-TOKEN";
 
 
-    private static final String ALLOWED_METHODS = "GET, PUT, POST, DELETE, OPTIONS";
+    private static final String ALLOWED_METHODS = "GET, PUT, POST, DELETE, PATCH, OPTIONS";
 
 
     private static final String ALLOWED_ORIGIN = "http://localhost:3000";

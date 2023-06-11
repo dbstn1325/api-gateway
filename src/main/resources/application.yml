@@ -21,33 +21,40 @@ spring:
 #          predicates:
 #            - Path=/user-service/**   # 8000/user-service/**로 들어오는 모든 클라이언트 요청은
         # 로그인
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/user-service/login
-            - Method=POST
-          filters:
-#            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
-            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-
-        # 회원가입
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/user-service/users
-            - Method=POST
-          filters:
-#            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
-            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+#        - id: user-service
+#          uri: lb://USER-SERVICE
+#          predicates:
+#            - Path=/user-service/login
+#            - Method=POST
+#          filters:
+##            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
+#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+#
+#        # 회원가입
+#        - id: user-service
+#          uri: lb://USER-SERVICE
+#          predicates:
+#            - Path=/user-service/users
+#            - Method=POST
+#          filters:
+##            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
+#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
 
         # User micro service
+#        - id: user-service
+#          uri: lb://USER-SERVICE
+#          predicates:
+#            - Path=/user-service/**
+##            - Method=GET
+#          filters:
+##            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
+#            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
             - Path=/user-service/**
-            - Method=GET
           filters:
-#            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
+            #            - RemoveRequestHeader=Cookie #POST로 전달된 값은 새로운 데이터처럼 인식하기 위해서 RequestHeader값을 초기화시켜줍니다.
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
 
         # Product micro service
